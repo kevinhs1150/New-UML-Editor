@@ -15,10 +15,12 @@ import java.awt.GridLayout;
 import java.awt.Color;
 
 import button.SelectButton;
+import button.UseCaseButton;
 
 public class UMLFrame extends JFrame implements ActionListener {
-	private static final long serialVersionUID = 1L;
 	private UMLCanvas canvasPanel;
+	private SelectButton selectButton;
+	private UseCaseButton useCaseButton;
 	
 	public UMLFrame() {
 		super();
@@ -31,32 +33,32 @@ public class UMLFrame extends JFrame implements ActionListener {
 		this.setLayout(panelLayout);
 		
 		JPanel buttonPanel = new JPanel();
-		canvasPanel = new UMLCanvas();
+		this.canvasPanel = new UMLCanvas();
 		JMenuBar menuBar = new JMenuBar();
 		
-		canvasPanel.setBackground(Color.WHITE);
+		this.canvasPanel.setBackground(Color.WHITE);
 		
 		this.add(menuBar, BorderLayout.NORTH);
 		this.add(buttonPanel, BorderLayout.WEST);
 		this.add(new JLabel("UML Editor"), BorderLayout.SOUTH);
-		this.add(canvasPanel, BorderLayout.CENTER);
+		this.add(this.canvasPanel, BorderLayout.CENTER);
 		
 		GridLayout buttonLayout = new GridLayout(6, 1);
 		buttonPanel.setLayout(buttonLayout);
 		
-		SelectButton selectButton = new SelectButton(canvasPanel, "Select");
+		this.selectButton = new SelectButton(this.canvasPanel, "Select");
 		// associationButton = new JButton("Association Line");
 		// generaliztionButton = new JButton("Generaliztion Line");
 		// compositionButton = new JButton("Composition Line");
 		// classButton = new JButton("Class");
-		// useCaseButton = new JButton("Use Case");
+		this.useCaseButton = new UseCaseButton(this.canvasPanel, "Use Case");
 		
-		buttonPanel.add(selectButton);
+		buttonPanel.add(this.selectButton);
 		// buttonPanel.add(associationButton);
 		// buttonPanel.add(generaliztionButton);
 		// buttonPanel.add(compositionButton);
 		// buttonPanel.add(classButton);
-		// buttonPanel.add(useCaseButton);
+		buttonPanel.add(this.useCaseButton);
 		
 		//set menubar
 		JMenu fileMenu = new JMenu("File");

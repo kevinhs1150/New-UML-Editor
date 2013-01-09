@@ -1,11 +1,16 @@
 package button;
 
-public class UseCaseButton {
+import java.awt.event.ActionEvent;
+
+import mode.UseCaseMode;
+import gui.UMLCanvas;
+
+public class UseCaseButton extends Button {
 	private static final long serialVersionUID = 1L;
-	public SelectButton(UMLCanvas canvas, String name) {
+	public UseCaseButton(UMLCanvas canvas, String name) {
 		super(canvas, name);
 	}
 	public void actionPerformed(ActionEvent e) {
-		this.canvas.setCurrentMode(new SelectMode(canvas));
+		this.canvas.setCurrentMode(new UseCaseMode(canvas));
 	}
 }

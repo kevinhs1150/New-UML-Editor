@@ -6,7 +6,6 @@ import gui.UMLCanvas;
 import mode.SelectMode;
 
 public class SelectButton extends Button {
-	private static final long serialVersionUID = 1L;
 	public SelectButton(UMLCanvas canvas, String name) {
 		super(canvas, name);
 	}

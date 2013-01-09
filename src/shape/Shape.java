@@ -19,6 +19,6 @@ public abstract class Shape {
 	}
 	public void paint(Graphics g)
 	{
-		System.out.println("name Paint!");
+		System.out.println("Shape Paint!");
 	}
 }
