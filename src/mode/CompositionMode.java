@@ -1,18 +1,39 @@
 package mode;
 
+import java.awt.Point;
 import java.awt.event.MouseEvent;
+import java.util.List;
+
+import shape.CompositionLine;
+import shape.Shape;
 
 import mode.Mode;
 import gui.UMLCanvas;
 
 public class CompositionMode implements Mode {
 	private UMLCanvas canvas;
+	private Point mousePress;
+	private Point mouseRelease;
 	
 	public CompositionMode(UMLCanvas canvas) {
 		this.canvas = canvas;
+		mousePress = new Point();
+		mouseRelease = new Point();
 	}
-	public void mousePressed(MouseEvent e) {}
-	public void mouseReleased(MouseEvent e) {}
+	public void mousePressed(MouseEvent e) {
+		mousePress.setLocation(e.getPoint());
+	}
+	public void mouseReleased(MouseEvent e) {
+		mouseRelease.setLocation(e.getPoint());
+		
+		List<Shape> container = canvas.getObjContainer();
+		Shape object1 = canvas.getObjectOfLocation(mousePress);
+		Shape object2 = canvas.getObjectOfLocation(mouseRelease);
+		if( object1 != null && object2 != null ) {
+			container.add(new CompositionLine(object1.getPortArray()[0], object2.getPortArray()[0]));
+			canvas.repaint();
+		}
+	}
 	public void mouseEntered(MouseEvent e) {}
 	public void mouseExited(MouseEvent e) {}
 	public void mouseClicked(MouseEvent e) {}

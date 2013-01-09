@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import gui.UMLCanvas;
 
 public abstract class Button extends JButton implements ActionListener {
+	private static final long serialVersionUID = 1L;
 	protected UMLCanvas canvas;
 	
 	public Button(UMLCanvas canvas, String name) {

@@ -7,18 +7,15 @@ import java.awt.Graphics;
 public abstract class Shape {
 	protected String name;
 	protected Point xy;
-	protected Dimension weightHeight;
+	protected Dimension widthHeight;
 	protected int depth;
-	protected boolean isSelected = false;
+	protected boolean isSelected;
 	
-	public Shape(String name, Point xy, Dimension weightHeight, int depth) {
-		this.name = name;
-		this.xy = xy;
-		this.weightHeight = weightHeight;
-		this.depth = depth;
-	}
-	public void paint(Graphics g)
-	{
-		System.out.println("Shape Paint!");
-	}
+	public abstract Point getXY();
+	public abstract Dimension getWidthHeight();
+	public abstract void setIsSelected(boolean isSelected);
+	public abstract int getDepth();
+	public abstract Port [] getPortArray();
+	public abstract void paint(Graphics g);
+	public abstract boolean getIsSelected();
 }

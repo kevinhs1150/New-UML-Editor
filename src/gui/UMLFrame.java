@@ -14,13 +14,15 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.Color;
 
+import button.AssociationButton;
+import button.ClassButton;
+import button.CompositionButton;
+import button.GeneralizationButton;
 import button.SelectButton;
 import button.UseCaseButton;
 
 public class UMLFrame extends JFrame implements ActionListener {
-	private UMLCanvas canvasPanel;
-	private SelectButton selectButton;
-	private UseCaseButton useCaseButton;
+	private static final long serialVersionUID = 1L;
 	
 	public UMLFrame() {
 		super();
@@ -33,32 +35,32 @@ public class UMLFrame extends JFrame implements ActionListener {
 		this.setLayout(panelLayout);
 		
 		JPanel buttonPanel = new JPanel();
-		this.canvasPanel = new UMLCanvas();
+		UMLCanvas canvasPanel = new UMLCanvas();
 		JMenuBar menuBar = new JMenuBar();
 		
-		this.canvasPanel.setBackground(Color.WHITE);
+		canvasPanel.setBackground(Color.WHITE);
 		
 		this.add(menuBar, BorderLayout.NORTH);
 		this.add(buttonPanel, BorderLayout.WEST);
 		this.add(new JLabel("UML Editor"), BorderLayout.SOUTH);
-		this.add(this.canvasPanel, BorderLayout.CENTER);
+		this.add(canvasPanel, BorderLayout.CENTER);
 		
 		GridLayout buttonLayout = new GridLayout(6, 1);
 		buttonPanel.setLayout(buttonLayout);
 		
-		this.selectButton = new SelectButton(this.canvasPanel, "Select");
-		// associationButton = new JButton("Association Line");
-		// generaliztionButton = new JButton("Generaliztion Line");
-		// compositionButton = new JButton("Composition Line");
-		// classButton = new JButton("Class");
-		this.useCaseButton = new UseCaseButton(this.canvasPanel, "Use Case");
+		SelectButton selectButton = new SelectButton(canvasPanel, "Select");
+		AssociationButton associationButton = new AssociationButton(canvasPanel, "Association Line");
+		GeneralizationButton generaliztionButton = new GeneralizationButton(canvasPanel, "Generaliztion Line");
+		CompositionButton compositionButton = new CompositionButton(canvasPanel, "Composition Line");
+		ClassButton classButton = new ClassButton(canvasPanel, "Class");
+		UseCaseButton useCaseButton = new UseCaseButton(canvasPanel, "Use Case");
 		
-		buttonPanel.add(this.selectButton);
-		// buttonPanel.add(associationButton);
-		// buttonPanel.add(generaliztionButton);
-		// buttonPanel.add(compositionButton);
-		// buttonPanel.add(classButton);
-		buttonPanel.add(this.useCaseButton);
+		buttonPanel.add(selectButton);
+		buttonPanel.add(associationButton);
+		buttonPanel.add(generaliztionButton);
+		buttonPanel.add(compositionButton);
+		buttonPanel.add(classButton);
+		buttonPanel.add(useCaseButton);
 		
 		//set menubar
 		JMenu fileMenu = new JMenu("File");

@@ -2,9 +2,11 @@ package mode;
 
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
+import java.util.List;
 
 import mode.Mode;
 import gui.UMLCanvas;
+import shape.Shape;
 import shape.UseCaseObject;
 
 public class UseCaseMode implements Mode {
@@ -17,7 +19,9 @@ public class UseCaseMode implements Mode {
 	}
 	public void mousePressed(MouseEvent e) {
 		System.out.println("in UseCaseMode: mousePressed()");
-		canvas.addObject(new UseCaseObject("testUseCase", e.getPoint(), new Dimension(USECASE_WIDTH, USECASE_HEIGHT), canvas.getNumOfObjects()));
+		List<Shape> container = canvas.getObjContainer();
+		container.add(new UseCaseObject("testUseCase", e.getPoint(), new Dimension(USECASE_WIDTH, USECASE_HEIGHT), canvas.getObjContainer().size()));
+		canvas.repaint();
 	}
 	public void mouseReleased(MouseEvent e) {}
 	public void mouseEntered(MouseEvent e) {}
