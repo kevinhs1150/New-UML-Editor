@@ -21,6 +21,7 @@ public abstract class BasicObject extends Shape {
 		for(int i = 0;i < 4;i++) {
 			this.portArray[i] = new Port(new Point(xy));
 		}
+		this.updatePortArray();
 	}
 	
 	public void setName(String name) {

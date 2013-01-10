@@ -6,14 +6,15 @@ public class CompositionLine extends LineObject {
 	private final double ARROW_HEIGHT = 20;
 	private final double ARRIW_BOTTOM = ARROW_HEIGHT;
 
-	public CompositionLine(Port port1, Port port2) {
-		super(port1, port2);
+	public CompositionLine(Shape object1, Shape object2) {
+		super(object1, object2);
 	}
 	
 	public void paint(Graphics g) {
+		super.paint(g);
 		System.out.println("CompositionLine paint!");
-		drawCL((int)port1.getXY().getX(), (int)port1.getXY().getY()
-			, (int)port2.getXY().getX(), (int)port2.getXY().getY(), g);
+		drawCL((int)selectedPort1.getXY().getX(), (int)selectedPort1.getXY().getY()
+			, (int)selectedPort2.getXY().getX(), (int)selectedPort2.getXY().getY(), g);
 	}
 	
 	public void drawCL(int sx, int sy, int ex, int ey, Graphics g)

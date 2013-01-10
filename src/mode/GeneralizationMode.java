@@ -29,7 +29,7 @@ public class GeneralizationMode implements Mode {
 		Shape object1 = canvas.getObjectOfLocation(mousePress);
 		Shape object2 = canvas.getObjectOfLocation(mouseRelease);
 		if( object1 != null && object2 != null ) {
-			container.add(new GeneralizationLine(object1.getPortArray()[0], object2.getPortArray()[0]));
+			container.add(new GeneralizationLine(object1, object2));
 			canvas.repaint();
 		}
 	}

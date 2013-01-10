@@ -1,21 +1,40 @@
 package shape;
 
-//import java.awt.Dimension;
 import java.awt.Dimension;
 import java.awt.Graphics;
-//import java.lang.Math;
-//
-//import shape.BasicObject;
 import java.awt.Point;
 import java.util.List;
 
 public class LineObject extends Shape {
-	protected Port port1;
-	protected Port port2;
+	protected Shape object1;
+	protected Shape object2;
+	protected Port selectedPort1;
+	protected Port selectedPort2;
 	
-	public LineObject(Port port1, Port port2) {
-		this.port1 = port1;
-		this.port2 = port2;
+	public LineObject(Shape object1, Shape object2) {
+		this.object1 = object1;
+		this.object2 = object2;
+	}
+	
+	protected void chooseConnectionPorts() {
+		Port [] portArray1 = this.object1.getPortArray();
+		Port [] portArray2 = this.object2.getPortArray();
+		
+		int minDistSquare = 0;
+		selectedPort1 = portArray1[0];
+		selectedPort2 = portArray2[0];
+		
+		for(Port port1 : portArray1) {
+			for(Port port2 : portArray2) {
+				int dist = (int) ((port1.getXY().getX() - port2.getXY().getX()) * (port1.getXY().getX() - port2.getXY().getX())
+					+ (port1.getXY().getY() - port2.getXY().getY()) * (port1.getXY().getY() - port2.getXY().getY()));
+				if(minDistSquare == 0 || dist < minDistSquare) {
+					minDistSquare = dist;
+					selectedPort1 = port1;
+					selectedPort2 = port2;
+				}
+			}
+		}
 	}
 	
 	public void setName(String name) {
@@ -55,8 +74,7 @@ public class LineObject extends Shape {
 	
 	public void paint(Graphics g) {
 		System.out.println("LineObject paint!");
-		g.drawLine((int)port1.getXY().getX(), (int)port1.getXY().getY()
-				, (int)port2.getXY().getX(), (int)port2.getXY().getY());
+		chooseConnectionPorts();
 	}
 
 	

@@ -6,14 +6,15 @@ public class GeneralizationLine extends LineObject {
 	private final double ARROW_HEIGHT = 20;
 	private final double ARRIW_BOTTOM = ARROW_HEIGHT;
 	
-	public GeneralizationLine(Port port1, Port port2) {
-		super(port1, port2);
+	public GeneralizationLine(Shape object1, Shape object2) {
+		super(object1, object2);
 	}
 	
 	public void paint(Graphics g) {
+		super.paint(g);
 		System.out.println("GeneralizationLine paint!");
-		drawGL((int)port1.getXY().getX(), (int)port1.getXY().getY()
-				, (int)port2.getXY().getX(), (int)port2.getXY().getY(), g);
+		drawGL((int)selectedPort1.getXY().getX(), (int)selectedPort1.getXY().getY()
+				, (int)selectedPort2.getXY().getX(), (int)selectedPort2.getXY().getY(), g);
 	}
 	
 	public void drawGL(int sx, int sy, int ex, int ey, Graphics g)
