@@ -79,4 +79,15 @@ public class Composite extends Shape {
 			}
 		}
 	}
+
+	public void translate(int dx, int dy) {
+		this.xy.setLocation(this.xy.getX() + dx, this.xy.getY() + dy);
+		for(Shape object : this.objContainer) {
+			object.getXY().setLocation(object.getXY().getX() + dx, object.getXY().getY() + dy);
+		}
+	}
+
+	public void ungroup(List<Shape> container) {
+		container.remove(this);
+	}
 }

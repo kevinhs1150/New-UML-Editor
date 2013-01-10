@@ -3,6 +3,7 @@ package shape;
 import java.awt.Point;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.List;
 
 public abstract class Shape {
 	protected String name;
@@ -18,6 +19,7 @@ public abstract class Shape {
 	public abstract boolean getIsSelected();
 	public abstract int getDepth();
 	public abstract Port [] getPortArray();
+	public abstract void translate(int dx, int dy);
+	public abstract void ungroup(List<Shape> container);
 	public abstract void paint(Graphics g);
-	
 }

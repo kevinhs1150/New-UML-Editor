@@ -58,9 +58,10 @@ public class SelectMode implements Mode {
 		int offsetY = e.getY() - (int)this.mouseMove.getY();
 		this.mouseMove.setLocation(e.getPoint());
 		
-		for(Shape basicObject1 : this.container) {
-			if(basicObject1.getIsSelected() == true) {
-				basicObject1.getXY().setLocation(basicObject1.getXY().getX() + offsetX, basicObject1.getXY().getY() + offsetY);
+		for(Shape object : this.container) {
+			if(object.getIsSelected() == true) {
+//				object.getXY().setLocation(basicObject1.getXY().getX() + offsetX, basicObject1.getXY().getY() + offsetY);
+				object.translate(offsetX, offsetY);
 			}
 		}
 		canvas.repaint();

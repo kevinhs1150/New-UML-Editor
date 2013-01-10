@@ -7,6 +7,7 @@ import java.awt.Graphics;
 //
 //import shape.BasicObject;
 import java.awt.Point;
+import java.util.List;
 
 public class LineObject extends Shape {
 	protected Port port1;
@@ -44,6 +45,12 @@ public class LineObject extends Shape {
 
 	public boolean getIsSelected() {
 		return false;
+	}
+	
+	public void translate(int dx, int dy) {
+	}
+	
+	public void ungroup(List<Shape> container) {
 	}
 	
 	public void paint(Graphics g) {

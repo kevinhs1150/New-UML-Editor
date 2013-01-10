@@ -3,6 +3,7 @@ package shape;
 import java.awt.Point;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.List;
 
 import shape.Port;
 
@@ -55,6 +56,13 @@ public abstract class BasicObject extends Shape {
 		this.portArray[1].setPort((int)this.xy.getX() + (int)this.widthHeight.getWidth() / 2, (int)this.xy.getY() + (int)this.widthHeight.getHeight());
 		this.portArray[2].setPort((int)this.xy.getX(), (int)this.xy.getY() + (int)this.widthHeight.getHeight() / 2);
 		this.portArray[3].setPort((int)this.xy.getX() + (int)this.widthHeight.getWidth(), (int)this.xy.getY() + (int)this.widthHeight.getHeight() / 2);
+	}
+	
+	public void translate(int dx, int dy) {
+		this.xy.setLocation(xy.getX() + dx, xy.getY() + dy);
+	}
+	
+	public void ungroup(List<Shape> container) {
 	}
 	
 	public void paint(Graphics g)

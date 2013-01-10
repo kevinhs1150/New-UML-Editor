@@ -11,8 +11,8 @@ public class UMLMain {
             public void run() {
 				UMLFrame frame = new UMLFrame("Kevin's UML Editor");
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
                 frame.createAndShowGUI();
-				frame.pack();
 				frame.setVisible(true);
             }
         });
