@@ -7,10 +7,12 @@ import java.awt.Point;
 public class Port {
 	private Point xy;
 	private Dimension widthHeight;
-		
-	public Port(Point xy, Dimension widthHeight) {
+	private final int PORT_WIDTH = 10;
+	private final int PORT_HEIGHT = PORT_WIDTH;
+	
+	public Port(Point xy) {
 		this.xy = xy;
-		this.widthHeight = widthHeight;
+		widthHeight = new Dimension(PORT_WIDTH, PORT_HEIGHT);
 	}
 	
 //	public void setPort(Point xy) {

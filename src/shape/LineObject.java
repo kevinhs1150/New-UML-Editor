@@ -17,6 +17,9 @@ public class LineObject extends Shape {
 		this.port2 = port2;
 	}
 	
+	public void setName(String name) {
+	}
+	
 	public Point getXY() {
 		return new Point(0, 0);
 	}
@@ -48,4 +51,6 @@ public class LineObject extends Shape {
 		g.drawLine((int)port1.getXY().getX(), (int)port1.getXY().getY()
 				, (int)port2.getXY().getX(), (int)port2.getXY().getY());
 	}
+
+	
 }

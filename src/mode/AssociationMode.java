@@ -26,6 +26,7 @@ public class AssociationMode implements Mode {
 		mouseRelease.setLocation(e.getPoint());
 		
 		List<Shape> container = canvas.getObjContainer();
+		//TODO ObjectContainer Class have getObjectOfLocation method
 		Shape object1 = canvas.getObjectOfLocation(mousePress);
 		Shape object2 = canvas.getObjectOfLocation(mouseRelease);
 		if( object1 != null && object2 != null ) {

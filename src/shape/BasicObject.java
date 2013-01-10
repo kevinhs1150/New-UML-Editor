@@ -8,8 +8,6 @@ import shape.Port;
 
 public abstract class BasicObject extends Shape {
 	private final int NUM_OF_PORT = 4;
-	private final int PORT_WIDTH = 10;
-	private final int PORT_HEIGHT = PORT_WIDTH;
 	protected Port [] portArray;
 	
 	public BasicObject(String name, Point xy, Dimension widthHeight, int depth) {
@@ -18,18 +16,22 @@ public abstract class BasicObject extends Shape {
 		this.widthHeight = widthHeight;
 		this.depth = depth;
 		
-		portArray = new Port[NUM_OF_PORT];
+		this.portArray = new Port[NUM_OF_PORT];
 		for(int i = 0;i < 4;i++) {
-			portArray[i] = new Port(new Point(xy), new Dimension(PORT_WIDTH, PORT_HEIGHT));
+			this.portArray[i] = new Port(new Point(xy));
 		}
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 	public Point getXY() {
-		return xy;
+		return this.xy;
 	}
 	
 	public Dimension getWidthHeight() {
-		return widthHeight;
+		return this.widthHeight;
 	}
 	
 	public void setIsSelected(boolean isSelected) {
@@ -37,7 +39,7 @@ public abstract class BasicObject extends Shape {
 	}
 	
 	public boolean getIsSelected() {
-		return isSelected;
+		return this.isSelected;
 	}
 	
 	public int getDepth() {
@@ -49,18 +51,18 @@ public abstract class BasicObject extends Shape {
 	}
 
 	public void updatePortArray() {
-		portArray[0].setPort((int)this.xy.getX() + (int)this.widthHeight.getWidth() / 2, (int)this.xy.getY());
-		portArray[1].setPort((int)this.xy.getX() + (int)this.widthHeight.getWidth() / 2, (int)this.xy.getY() + (int)this.widthHeight.getHeight());
-		portArray[2].setPort((int)this.xy.getX(), (int)this.xy.getY() + (int)this.widthHeight.getHeight() / 2);
-		portArray[3].setPort((int)this.xy.getX() + (int)this.widthHeight.getWidth(), (int)this.xy.getY() + (int)this.widthHeight.getHeight() / 2);
+		this.portArray[0].setPort((int)this.xy.getX() + (int)this.widthHeight.getWidth() / 2, (int)this.xy.getY());
+		this.portArray[1].setPort((int)this.xy.getX() + (int)this.widthHeight.getWidth() / 2, (int)this.xy.getY() + (int)this.widthHeight.getHeight());
+		this.portArray[2].setPort((int)this.xy.getX(), (int)this.xy.getY() + (int)this.widthHeight.getHeight() / 2);
+		this.portArray[3].setPort((int)this.xy.getX() + (int)this.widthHeight.getWidth(), (int)this.xy.getY() + (int)this.widthHeight.getHeight() / 2);
 	}
 	
 	public void paint(Graphics g)
 	{
 		System.out.println("BasicObject Paint!");
 		updatePortArray();
-		if (isSelected == true) {
-			for(Port port : portArray) {
+		if (this.isSelected == true) {
+			for(Port port : this.portArray) {
 				port.paint(g);
 			}
 		}

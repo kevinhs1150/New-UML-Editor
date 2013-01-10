@@ -11,11 +11,13 @@ public abstract class Shape {
 	protected int depth;
 	protected boolean isSelected;
 	
+	public abstract void setName(String name);
 	public abstract Point getXY();
 	public abstract Dimension getWidthHeight();
 	public abstract void setIsSelected(boolean isSelected);
+	public abstract boolean getIsSelected();
 	public abstract int getDepth();
 	public abstract Port [] getPortArray();
 	public abstract void paint(Graphics g);
-	public abstract boolean getIsSelected();
+	
 }

@@ -21,7 +21,7 @@ public class UMLCanvas extends JPanel {
 	}
 	
 	public void setCurrentMode(Mode currentMode) {
-		System.out.println("in UMLCanvas: setCurrentMode()");
+		System.out.println("in UMLCanvas: setCurrentMode() " + currentMode);
 		this.removeMouseListener(this.currentMode);
 		this.removeMouseMotionListener(this.currentMode);
 		this.currentMode = currentMode;

@@ -1,14 +1,14 @@
 package gui;
 
 import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import menu.GroupMenuItem;
+import menu.RenameMenuItem;
+import menu.UngroupMenuItem;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -21,7 +21,7 @@ import button.GeneralizationButton;
 import button.SelectButton;
 import button.UseCaseButton;
 
-public class UMLFrame extends JFrame implements ActionListener {
+public class UMLFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
 	public UMLFrame() {
@@ -48,12 +48,12 @@ public class UMLFrame extends JFrame implements ActionListener {
 		GridLayout buttonLayout = new GridLayout(6, 1);
 		buttonPanel.setLayout(buttonLayout);
 		
-		SelectButton selectButton = new SelectButton(canvasPanel, "Select");
-		AssociationButton associationButton = new AssociationButton(canvasPanel, "Association Line");
-		GeneralizationButton generaliztionButton = new GeneralizationButton(canvasPanel, "Generaliztion Line");
-		CompositionButton compositionButton = new CompositionButton(canvasPanel, "Composition Line");
-		ClassButton classButton = new ClassButton(canvasPanel, "Class");
-		UseCaseButton useCaseButton = new UseCaseButton(canvasPanel, "Use Case");
+		SelectButton selectButton = new SelectButton(canvasPanel, buttonPanel, "Select");
+		AssociationButton associationButton = new AssociationButton(canvasPanel, buttonPanel, "Association Line");
+		GeneralizationButton generaliztionButton = new GeneralizationButton(canvasPanel, buttonPanel, "Generaliztion Line");
+		CompositionButton compositionButton = new CompositionButton(canvasPanel, buttonPanel, "Composition Line");
+		ClassButton classButton = new ClassButton(canvasPanel, buttonPanel, "Class");
+		UseCaseButton useCaseButton = new UseCaseButton(canvasPanel, buttonPanel, "Use Case");
 		
 		buttonPanel.add(selectButton);
 		buttonPanel.add(associationButton);
@@ -62,27 +62,16 @@ public class UMLFrame extends JFrame implements ActionListener {
 		buttonPanel.add(classButton);
 		buttonPanel.add(useCaseButton);
 		
-		//set menubar
 		JMenu fileMenu = new JMenu("File");
 		JMenu editMenu = new JMenu("Edit");
 		menuBar.add(fileMenu);
 		menuBar.add(editMenu);
-		JMenuItem groupMenuItem = new JMenuItem("Group");
-		JMenuItem ungroupMenuItem = new JMenuItem("Ungroup");
-		JMenuItem editMenuItem = new JMenuItem("Edit");
+		GroupMenuItem groupMenuItem = new GroupMenuItem(canvasPanel, "Group");
+		UngroupMenuItem ungroupMenuItem = new UngroupMenuItem(canvasPanel, "Ungroup");
+		RenameMenuItem renameMenuItem = new RenameMenuItem(canvasPanel, "Rename");
+		
 		editMenu.add(groupMenuItem);
 		editMenu.add(ungroupMenuItem);
-		editMenu.add(editMenuItem);
-		
-		// groupMenuItem.addActionListener(canvasPanel);
-		// groupMenuItem.setActionCommand("groupMenuItemClicked");
-		// ungroupMenuItem.addActionListener(canvasPanel);
-		// ungroupMenuItem.setActionCommand("ungroupMenuItemClicked");
-		// editMenuItem.addActionListener(canvasPanel);
-		// editMenuItem.setActionCommand("editMenuItemClicked");
-	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
+		editMenu.add(renameMenuItem);
 	}
 }
