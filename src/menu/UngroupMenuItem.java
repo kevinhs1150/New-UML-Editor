@@ -18,14 +18,10 @@ public class UngroupMenuItem extends MenuItem {
 		List<Shape> container = canvas.getObjContainer();
 		
 		for(int i = 0;i < container.size();i++) {
-			container.get(i).ungroup(container);
+			if(container.get(i).getIsSelected() == true) {
+				container.get(i).ungroup(container);
+			}
 		}
-		
-//		for(Shape object : container) {
-//			if(object.getIsSelected() == true) {
-//				object.ungroup(container);
-//			}
-//		}
 		
 		canvas.repaint();
 	}

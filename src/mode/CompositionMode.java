@@ -29,7 +29,7 @@ public class CompositionMode implements Mode {
 		List<Shape> container = canvas.getObjContainer();
 		Shape object1 = canvas.getObjectOfLocation(mousePress);
 		Shape object2 = canvas.getObjectOfLocation(mouseRelease);
-		if( object1 != null && object2 != null ) {
+		if( object1 != null && object2 != null && object1 != object2 ) {
 			container.add(new CompositionLine(object1, object2));
 			canvas.repaint();
 		}

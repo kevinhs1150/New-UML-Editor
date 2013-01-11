@@ -29,7 +29,7 @@ public class AssociationMode implements Mode {
 		//TODO ObjectContainer Class have getObjectOfLocation method
 		Shape object1 = canvas.getObjectOfLocation(mousePress);
 		Shape object2 = canvas.getObjectOfLocation(mouseRelease);
-		if( object1 != null && object2 != null ) {
+		if( object1 != null && object2 != null && object1 != object2 ) {
 			container.add(new AssociationLine(object1, object2));
 			canvas.repaint();
 		}
